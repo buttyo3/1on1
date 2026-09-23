@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>1on1面談の手順｜教科書の付録</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Zen+Old+Mincho:wght@600;900&family=Klee+One:wght@600&display=swap" rel="stylesheet">
+<script src="../pass.js"></script>
+<style>
+:root{
+  --paper:#F5F7FA; --paper-2:#FFFFFF; --rule:#D6DFEB;
+  --ink:#1D2B4C; --ink-soft:#56627A; --red:#C8352E;
+  --line:#06C755; --line-dark:#05A548;
+  --serif:"Zen Old Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",sans-serif;
+  --hand:"Klee One","Hiragino Maru Gothic ProN",cursive;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--paper:#172033;--paper-2:#1E2940;--rule:#2B3A57;--ink:#E8ECF4;--ink-soft:#A6B0C4;--red:#F0645C}
+}
+:root[data-theme="dark"]{--paper:#172033;--paper-2:#1E2940;--rule:#2B3A57;--ink:#E8ECF4;--ink-soft:#A6B0C4;--red:#F0645C}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.85;-webkit-font-smoothing:antialiased;overflow-x:hidden;padding-bottom:calc(96px + env(safe-area-inset-bottom,0px))}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px;border-radius:4px}
+.wrap{width:min(880px,100% - 40px);margin-inline:auto}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+.site-head{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);padding-top:env(safe-area-inset-top,0px)}
+.site-head .wrap{display:flex;align-items:center;justify-content:space-between;height:60px;gap:16px}
+.brand{font-family:var(--serif);font-weight:900;font-size:1rem;text-decoration:none}
+.brand small{font-family:var(--sans);font-weight:500;font-size:.78rem;color:var(--ink-soft);margin-left:8px}
+.head-link{font-size:.88rem;color:var(--ink-soft);text-decoration:none}
+.head-link:hover{color:var(--ink)}
+
+.title{padding:52px 0 28px}
+.title .appx-no{display:inline-block;background:var(--red);color:#fff;font-family:var(--serif);font-weight:600;font-size:.88rem;padding:2px 12px;border-radius:3px;margin-bottom:14px}
+.title h1{font-family:var(--serif);font-weight:900;font-size:clamp(1.9rem,5.4vw,2.9rem);line-height:1.35}
+.title p{margin-top:14px;color:var(--ink-soft);max-width:34em}
+.rule-one{margin-top:22px;font-family:var(--hand);color:var(--red);font-size:1.15rem;line-height:1.7}
+
+/* 30分の配分バー */
+.bar{display:flex;height:38px;border:1.5px solid var(--ink);border-radius:6px;overflow:hidden;margin:26px 0 6px;max-width:720px}
+.bar a{display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:.82rem;font-weight:700;border-right:1.5px solid var(--ink);white-space:nowrap;overflow:hidden;padding:0 6px}
+.bar a:last-child{border-right:0}
+.bar a:nth-child(odd){background:color-mix(in srgb,var(--ink) 7%,transparent)}
+.bar-scale{display:flex;justify-content:space-between;max-width:720px;font-size:.78rem;color:var(--ink-soft)}
+
+h2.sec-title{font-family:var(--serif);font-weight:900;font-size:clamp(1.4rem,3.4vw,1.8rem);line-height:1.45;margin-bottom:8px}
+.sec{padding:52px 0;border-top:1px solid var(--rule)}
+.sec .lead{color:var(--ink-soft);margin-bottom:26px;max-width:38em}
+
+/* 準備チェック */
+.checks{list-style:none;max-width:680px}
+.checks li{border-bottom:1px solid var(--rule)}
+.checks label{display:flex;gap:12px;align-items:flex-start;padding:12px 2px;cursor:pointer}
+.checks input{appearance:none;flex:none;width:20px;height:20px;border:2px solid var(--ink-soft);border-radius:4px;margin-top:5px;cursor:pointer;display:grid;place-items:center}
+.checks input:checked{border-color:var(--red);background:no-repeat center/14px url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M3 11l4 4 10-11' fill='none' stroke='%23C8352E' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E")}
+.checks input:checked + span{color:var(--ink-soft);text-decoration:line-through;text-decoration-color:var(--red)}
+
+/* ===== 手順：ノートの左余白に時刻を書く ===== */
+.steps{list-style:none;position:relative}
+.step{display:grid;grid-template-columns:88px 1fr;position:relative;transition:background .2s}
+.step::before{content:"";position:absolute;left:78px;top:0;bottom:0;width:1.5px;background:color-mix(in srgb,var(--red) 45%,transparent)}
+.step .t{font-family:var(--hand);color:var(--red);font-size:1.05rem;padding-top:22px;line-height:1.4}
+.step .t small{display:block;font-size:.8rem;color:var(--ink-soft);font-family:var(--sans)}
+.step .c{padding:20px 0 30px 22px;border-bottom:1px solid var(--rule)}
+.step h3{font-family:var(--serif);font-size:1.3rem;line-height:1.5}
+.step .goal{color:var(--ink-soft);margin:4px 0 14px}
+.script{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:14px}
+.script li{background:var(--paper-2);border:1.5px solid var(--rule);border-radius:4px 14px 14px 14px;padding:10px 16px;max-width:36em;font-size:1rem}
+.script li::before{content:"上司";display:inline-block;font-size:.72rem;font-weight:700;color:var(--ink-soft);border:1px solid var(--rule);border-radius:3px;padding:0 6px;margin-right:10px;vertical-align:2px}
+.tips{list-style:none;font-size:.94rem}
+.tips li{position:relative;padding-left:1.3em}
+.tips li::before{content:"・";position:absolute;left:0;color:var(--red);font-weight:700}
+.step.now{background:color-mix(in srgb,var(--red) 6%,transparent)}
+.step.now .t::after{content:"いまここ";display:block;margin-top:6px;font-size:.85rem;background:var(--red);color:#fff;border-radius:3px;padding:0 6px;width:fit-content;font-family:var(--sans);font-weight:700}
+.step.done{opacity:.55}
+@media (max-width:600px){
+  .step{grid-template-columns:62px 1fr}
+  .step::before{left:54px}
+  .step .t{font-size:.95rem}
+  .step .c{padding-left:16px}
+}
+
+/* NG */
+.ng{list-style:none;display:flex;flex-direction:column;gap:12px;max-width:760px}
+.ng li{display:grid;grid-template-columns:minmax(0,15em) 1fr;gap:4px 20px;align-items:baseline}
+.ng s{text-decoration:none;position:relative;font-size:1.02rem;color:var(--ink-soft);justify-self:start}
+.ng s::after{content:"";position:absolute;left:-4px;right:-4px;top:52%;height:2.5px;background:var(--red);transform:rotate(-2deg);border-radius:2px}
+.ng span{font-family:var(--hand);color:var(--red);font-size:.95rem}
+@media (max-width:640px){.ng li{grid-template-columns:1fr}}
+
+/* 困ったとき */
+.faq{max-width:760px}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{list-style:none;cursor:pointer;padding:18px 40px 18px 0;font-weight:700;position:relative}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:8px;top:50%;width:11px;height:11px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:translateY(-70%) rotate(45deg);transition:transform .2s}
+.faq details[open] summary::after{transform:translateY(-30%) rotate(-135deg)}
+.faq details p{padding:0 0 18px;color:var(--ink-soft)}
+
+/* 終わったあとメモ */
+.memo{max-width:640px;background:var(--paper-2);border:1.5px solid var(--rule);border-radius:4px;padding:18px 22px 18px 44px;position:relative;
+  background-image:repeating-linear-gradient(to bottom,transparent 0,transparent 35px,var(--rule) 35px,var(--rule) 36px);background-position:0 17px}
+.memo::before{content:"";position:absolute;left:24px;top:0;bottom:0;width:1.5px;background:color-mix(in srgb,var(--red) 45%,transparent)}
+.memo p{line-height:36px}
+.memo b{font-family:var(--serif)}
+.memo-actions{margin-top:14px;display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-line-sm{appearance:none;font:inherit;font-size:.9rem;font-weight:700;color:var(--ink);background:transparent;border:1.5px solid var(--ink);border-radius:999px;padding:8px 20px;cursor:pointer}
+.btn-line-sm:hover{background:var(--ink);color:var(--paper)}
+
+.types{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:760px}
+@media (max-width:600px){.types{grid-template-columns:1fr}}
+.types a{display:block;text-decoration:none;border:1.5px solid var(--rule);border-radius:6px;padding:14px 18px;background:var(--paper-2)}
+.types a:hover{border-color:var(--ink-soft)}
+.types b{font-family:var(--serif);font-weight:900;color:var(--red);margin-right:8px}
+.types span{display:block;font-size:.92rem;color:var(--ink-soft);margin-top:2px}
+
+.source{font-size:.9rem;color:var(--ink-soft);margin-top:10px}
+.next{display:flex;flex-wrap:wrap;gap:12px 20px;margin-top:22px;align-items:center}
+.btn-ink{display:inline-flex;align-items:center;background:var(--ink);color:var(--paper);font-weight:700;text-decoration:none;padding:12px 24px;border-radius:999px;border:1.5px solid var(--ink)}
+.btn-ink:hover{background:transparent;color:var(--ink)}
+
+footer{border-top:1px solid var(--rule);padding:30px 0 40px;font-size:.86rem;color:var(--ink-soft)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px}
+footer nav{display:flex;gap:18px;flex-wrap:wrap}
+
+/* ===== 面談モード（下に固定） ===== */
+.runner{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--ink);color:var(--paper);padding:12px 0 calc(12px + env(safe-area-inset-bottom,0px))}
+.runner .wrap{display:flex;align-items:center;gap:14px 20px;flex-wrap:wrap}
+.clock{font-family:var(--serif);font-weight:900;font-size:1.7rem;line-height:1;font-variant-numeric:tabular-nums;min-width:4.2em}
+.now-label{flex:1;min-width:10em;font-size:.92rem;line-height:1.5}
+.now-label b{display:block;font-size:1rem}
+.now-label small{opacity:.75}
+.runner button{appearance:none;font:inherit;font-weight:700;font-size:.92rem;border-radius:999px;padding:9px 20px;cursor:pointer;border:1.5px solid var(--paper)}
+.r-main{background:var(--paper);color:var(--ink)}
+.r-sub{background:transparent;color:var(--paper)}
+.progress{position:absolute;left:0;top:0;height:3px;background:var(--red);width:0;transition:width 1s linear}
+
+@media (max-width:600px){
+  .bar a{font-size:.74rem;padding:0 2px}
+  .bar .bm{display:none}
+  .runner .wrap{flex-wrap:nowrap;gap:10px}
+  .clock{font-size:1.3rem;min-width:3.4em}
+  .now-label{font-size:.8rem;min-width:0}
+  .now-label b{font-size:.84rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .now-label small{display:none}
+  .runner button{padding:7px 12px;font-size:.8rem;white-space:nowrap}
+  .r-sub{display:none}
+}
+@media print{
+  .site-head,.runner,.memo-actions,footer,.next{display:none!important}
+  body{padding:0;background:#fff;color:#000}
+  .sec{padding:24px 0;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="../">組織で戦う人の教科書<small>付録</small></a>
+    <a class="head-link" href="../">付録の一覧へ</a>
+  </div>
+</header>
+
+<main>
+  <div class="wrap title">
+    <span class="appx-no">付録</span>
+    <h1>1on1面談の手順</h1>
+    <p>何を、どの順番で聞けばいいか。30分の1on1をそのまま進められる手順です。面談の直前に開いて、横に置いたまま使ってください。</p>
+    <p class="rule-one">悩みは「解決するもの」ではなく、「聞くもの」です。</p>
+
+    <nav class="bar" id="bar" aria-label="30分の配分"></nav>
+    <div class="bar-scale"><span>0分</span><span>30分</span></div>
+  </div>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2 class="sec-title">始める前に</h2>
+      <p class="lead">5分前に、ここだけ確認してください。</p>
+      <ul class="checks" id="prep"></ul>
+    </div>
+  </section>
+
+  <section class="sec" id="flow">
+    <div class="wrap">
+      <h2 class="sec-title">30分の流れ</h2>
+      <p class="lead">下の「面談をはじめる」を押すと、今どこを話す時間かを表示します。</p>
+      <ol class="steps" id="steps"></ol>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2 class="sec-title">1on1で言ってはいけないこと</h2>
+      <p class="lead">どれも、昔の私が全部やっていたことです。</p>
+      <ul class="ng" id="ng"></ul>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2 class="sec-title">こんなときは</h2>
+      <div class="faq" id="faq"></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2 class="sec-title">終わったら、3行だけメモ</h2>
+      <p class="lead">次の1on1は、このメモを読み返すところから始まります。</p>
+      <div class="memo" id="memo"></div>
+      <div class="memo-actions">
+        <button type="button" class="btn-line-sm" id="copyMemo">メモの型をコピー</button>
+        <button type="button" class="btn-line-sm" onclick="window.print()">このページを印刷</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <h2 class="sec-title">部下のタイプで、聞き方を変える</h2>
+      <p class="lead">同じ手順でも、相手のタイプで一言目が変わります。タイプがわからないときは、先に診断をどうぞ。</p>
+      <div class="types" id="types"></div>
+      <p class="source">この手順は、noteの記事<a href="https://note.com/buttyo3/n/n12566f8c1d74" target="_blank" rel="noopener">「部下との1on1が苦痛だった私が編み出した面談テクニック」</a>ほか、1on1の記事をもとにまとめています。</p>
+      <div class="next">
+        <a class="btn-ink" href="https://buttyo3.github.io/buka-shindan/" target="_blank" rel="noopener">部下タイプ診断をする</a>
+        <a href="../">付録の一覧に戻る</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© ぶっちょさん｜組織で戦う人の教科書</span>
+    <nav>
+      <a href="https://note.com/buttyo3" target="_blank" rel="noopener">note</a>
+      <a href="https://note.com/buttyo3/membership" target="_blank" rel="noopener">メンバーシップ</a>
+      <a href="https://lin.ee/9aEgmmc" target="_blank" rel="noopener">LINEで相談する</a>
+    </nav>
+  </div>
+</footer>
+
+<div class="runner" id="runner">
+  <div class="progress" id="progress"></div>
+  <div class="wrap">
+    <div class="clock" id="clock">30:00</div>
+    <div class="now-label" id="nowLabel"><b>準備ができたら、はじめましょう</b><small>30分で進みます</small></div>
+    <button type="button" class="r-main" id="rMain">面談をはじめる</button>
+    <button type="button" class="r-sub" id="rReset" hidden>最初から</button>
+  </div>
+</div>
+
+<script>
+/* =====================================================================
+   中身はここを編集してください
+   ===================================================================== */
+
+/* 始める前のチェック */
+const PREP = [
+  "前回の1on1のメモと、約束したことを読み返した",
+  "今日の相手のタイプ（D1〜D4）を思い出した",
+  "スマホは伏せた。PCは閉じた",
+  "向かい合わせではなく、横か斜め（90度）に座れる場所にした",
+  "「今日は解決しない。聞く」と決めた",
+];
+
+/* 30分の流れ（min は分数。合計が1on1の長さになります） */
+const STEPS = [
+  { min:5, name:"はじめ", title:"話していい空気をつくる",
+    goal:"評価の場ではないと伝えて、肩の力を抜いてもらう時間です。",
+    script:["今日は評価の場じゃないから、何でも話して大丈夫だよ","最近どう？仕事以外のことでもいいよ"],
+    tips:["最初の話題は、仕事と関係ないことで構いません","前回の約束を覚えていることを、さりげなく伝えます"] },
+  { min:10, name:"聞く", title:"本音が出てくるまで、聞く",
+    goal:"部下が7、上司が3。解決策はまだ言いません。",
+    script:["最近、一番時間を取られていることって何？","モヤっとしていることある？小さいことでもいいよ","それは大変だったね"],
+    tips:["うなずいて、相手の言葉をそのまま繰り返します","沈黙は10秒待ちます。埋めにいかない","「それで？」と先を急かさない"] },
+  { min:10, name:"深める", title:"気持ちの奥にあるものを聞く",
+    goal:"「認めてほしい」「わかってほしい」が隠れていないか、聞いていきます。",
+    script:["それって、どういうときにそう感じる？","本当は、どうしたい？","そこまで考えてたんだね"],
+    tips:["悩みの多くは、解決策ではなく「聞いてほしい」「認めてほしい」です","アドバイスしたくなったら、「私の意見も言っていい？」と一度聞きます"] },
+  { min:5, name:"次の一歩", title:"次の1on1までの約束を決める",
+    goal:"1on1は聞いて終わりではなく、一歩進むための場です。",
+    script:["次の1on1までに、何か一つやるとしたら何にする？","じゃあ私は、○○をやっておくね","今日は話してくれてありがとう"],
+    tips:["やることは部下に決めてもらいます","上司側の約束も、必ず一つ決めて守ります"] },
+];
+
+/* 言ってはいけないこと [言葉, 理由] */
+const NG = [
+  ["成果を出してから言おうよ", "「認めてほしい」という気持ちを、丸ごと否定してしまいます"],
+  ["それで？", "話す気がなくなります"],
+  ["こうすればいいんだよ", "解決策を先に出すと、そこで話が終わります"],
+  ["俺のときはさ…", "1on1の主役は部下です"],
+  ["そういえば評価の件だけど", "評価の話は、評価面談でします"],
+];
+
+/* こんなときは [状況, どうするか] */
+const TROUBLE = [
+  ["「特にないです」と言われた", "「じゃあ、最近よかったことは？」と、話しやすい方から聞きます。何も出てこない日があっても大丈夫です。続けることで、話してくれるようになります。"],
+  ["沈黙が続いて気まずい", "「急がなくていいよ」と一言添えて、10秒待ちます。沈黙は、相手が考えている時間です。"],
+  ["愚痴だけで終わりそう", "最後まで聞いたあとに、「その中で、自分で変えられそうなことってある？」と聞いて、次の一歩につなげます。"],
+  ["辞めたい、と言われた", "その場で引き止めたり、理由を問い詰めたりしないでください。「話してくれてありがとう」と受け止めて、改めて時間を取ります。"],
+];
+
+/* 終わったあとの3行メモ */
+const MEMO = ["話してくれたこと：", "約束したこと（部下／自分）：", "気になったこと："];
+
+/* タイプ別の一言目 */
+const TYPE_TIPS = [
+  ["D1", "「今、一番わからないことは何？」から"],
+  ["D2", "「最近ちょっとでも手応えがあった仕事ってある？」から"],
+  ["D3", "「今、ブレーキになっているものってある？」から"],
+  ["D4", "「1年後、どうなっていたい？」から"],
+];
+
+/* ===== ここから下は編集しなくて大丈夫です ===== */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const TOTAL = STEPS.reduce((a, s) => a + s.min, 0);
+
+/* 配分バー */
+document.getElementById("bar").innerHTML = STEPS.map((s, i) =>
+  `<a href="#step-${i}" style="flex:${s.min}">${esc(s.name)}<span class="bm">　${s.min}分</span></a>`).join("");
+document.querySelector(".bar-scale span:last-child").textContent = TOTAL + "分";
+
+/* 準備 */
+document.getElementById("prep").innerHTML = PREP.map(p =>
+  `<li><label><input type="checkbox"><span>${esc(p)}</span></label></li>`).join("");
+
+/* 手順 */
+let acc = 0;
+document.getElementById("steps").innerHTML = STEPS.map((s, i) => {
+  const from = acc; acc += s.min;
+  return `<li class="step" id="step-${i}">
+    <div class="t">${from}〜${acc}分<small>${esc(s.name)}</small></div>
+    <div class="c">
+      <h3>${esc(s.title)}</h3>
+      <p class="goal">${esc(s.goal)}</p>
+      <ul class="script">${s.script.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+      <ul class="tips">${s.tips.map(x => `<li>${esc(x)}</li>`).join("")}</ul>
+    </div></li>`;
+}).join("");
+
+/* NG・困ったとき・メモ・タイプ */
+document.getElementById("ng").innerHTML = NG.map(([w, why]) => `<li><s>「${esc(w)}」</s><span>${esc(why)}</span></li>`).join("");
+document.getElementById("faq").innerHTML = TROUBLE.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a)}</p></details>`).join("");
+document.getElementById("memo").innerHTML = MEMO.map(m => `<p><b>${esc(m)}</b></p>`).join("");
+document.getElementById("types").innerHTML = TYPE_TIPS.map(([c, t]) => `<a href="https://buttyo3.github.io/buka-shindan/" target="_blank" rel="noopener"><b>${c}</b>${esc(t)}<span>部下タイプ診断で確かめる</span></a>`).join("");
+document.getElementById("copyMemo").addEventListener("click", async e => {
+  const b = e.currentTarget;
+  try { await navigator.clipboard.writeText(MEMO.join("\n")); b.textContent = "コピーしました"; }
+  catch (err) { b.textContent = "コピーできませんでした"; }
+  setTimeout(() => b.textContent = "メモの型をコピー", 1800);
+});
+
+/* 面談モード */
+const clock = document.getElementById("clock"), nowLabel = document.getElementById("nowLabel");
+const rMain = document.getElementById("rMain"), rReset = document.getElementById("rReset"), bar = document.getElementById("progress");
+let startAt = null, pausedMs = 0, timer = null, lastStep = -1;
+const fmt = ms => { const s = Math.max(0, Math.round(ms / 1000)); return String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0"); };
+function elapsed() { return startAt ? pausedMs + (Date.now() - startAt) : pausedMs; }
+function tick() {
+  const e = elapsed(), min = e / 60000;
+  clock.textContent = fmt(TOTAL * 60000 - e);
+  bar.style.width = Math.min(100, e / (TOTAL * 600)) + "%";
+  let a = 0, idx = STEPS.length;
+  for (let i = 0; i < STEPS.length; i++) { if (min < a + STEPS[i].min) { idx = i; break; } a += STEPS[i].min; }
+  document.querySelectorAll(".step").forEach((el, i) => { el.classList.toggle("now", i === idx); el.classList.toggle("done", i < idx); });
+  if (idx < STEPS.length) {
+    const s = STEPS[idx], nx = STEPS[idx + 1];
+    nowLabel.innerHTML = `<b>いま：${esc(s.name)}（${esc(s.title)}）</b><small>${nx ? "次は「" + esc(nx.name) + "」" : "最後のパートです"}</small>`;
+    if (idx !== lastStep && startAt) { document.getElementById("step-" + idx).scrollIntoView({ behavior: "smooth", block: "start" }); }
+  } else {
+    nowLabel.innerHTML = `<b>時間になりました</b><small>3行メモを書いて終わりましょう</small>`;
+    if (lastStep !== idx) document.getElementById("memo").scrollIntoView({ behavior: "smooth", block: "center" });
+    stop(); rMain.hidden = true;
+  }
+  lastStep = idx;
+}
+function stop() { if (startAt) { pausedMs += Date.now() - startAt; startAt = null; } clearInterval(timer); }
+rMain.addEventListener("click", () => {
+  if (startAt) { stop(); rMain.textContent = "再開する"; }
+  else { startAt = Date.now(); timer = setInterval(tick, 1000); tick(); rMain.textContent = "一時停止"; rReset.hidden = false; }
+});
+rReset.addEventListener("click", () => {
+  stop(); pausedMs = 0; lastStep = -1; rMain.hidden = false; rMain.textContent = "面談をはじめる"; rReset.hidden = true;
+  clock.textContent = fmt(TOTAL * 60000); bar.style.width = "0";
+  nowLabel.innerHTML = `<b>準備ができたら、はじめましょう</b><small>${TOTAL}分で進みます</small>`;
+  document.querySelectorAll(".step").forEach(el => el.classList.remove("now", "done"));
+});
+clock.textContent = fmt(TOTAL * 60000);
+</script>
+</body>
+</html>
